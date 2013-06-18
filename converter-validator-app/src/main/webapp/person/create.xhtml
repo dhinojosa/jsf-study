@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>Create Person</title>
+</h:head>
+<h:body>
+    Please enter your information
+    <h:form id="createPerson">
+        <h:panelGrid columns="3">
+            <h:outputLabel id="firstName_label" name="firstName_label" value="First Name"/>
+            <h:inputText id="firstName" name="firstName" value="#{person.firstName}" required="true">
+                <f:validateLength for="firstName" minimum="2"/>
+            </h:inputText>
+            <h:message for="firstName"/>
+            <h:outputLabel id="lastName_label" name="lastName_label" value="Last Name"/>
+            <h:inputText id="lastName" name="lastName" value="#{person.lastName}" required="true">
+                <f:validateLength for="lastName" minimum="2"/>
+            </h:inputText>
+            <h:message for="lastName"/>
+            <h:outputLabel id="ssn_label" name="ssn_label" value="Social Security"/>
+            <h:inputText id="ssn" name="ssn" value="#{person.socialSecurityNumber}" required="true">
+                <f:validateRegex pattern="^\d{3}-\d{2}-\d{4}$" for="ssn"/>
+                <f:validator for="ssn" validatorId="socialSecurityValidator"/>
+            </h:inputText>
+            <h:message for="ssn"/>
+            <h:outputLabel id="districtLabel" name="districtLabel" value="District"/>
+            <h:selectOneMenu id="district" name="district" value="#{person.district}" converter="#{districtConverter}">
+                <f:selectItems value="#{districtFactoryBean.districts}" var="district"
+                               itemLabel="#{district.name}"/>
+            </h:selectOneMenu>
+            <h:message for="district"/>
+        </h:panelGrid>
+        <h:commandButton id="submit" action="#{register.save(person)}" value="Save"/>
+    </h:form>
+</h:body>
+</html>

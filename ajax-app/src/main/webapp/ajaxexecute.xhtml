@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Simple Ajax-JSF Execute Page</title>
+</h:head>
+
+<h:body>
+    <h3>AJAX Execute JSF Page</h3>
+
+    <h:form id="mainForm">
+        <h:panelGrid columns="2" id="panelGrid">
+            <h:outputLabel id="firstNameLabel" name="firstNameLabel" value="First Name"/>
+            <h:inputText id="firstName" value="#{registerBean.firstName}"/>
+            <h:outputLabel id="lastNameLabel" name="lastNameLabel" value="Last Name"/>
+            <h:inputText id="lastName" value="#{registerBean.lastName}"/>
+            <h:selectOneRadio id="isUSCitizen" value="#{registerBean.USCitizen}">
+                <f:selectItem itemLabel="Yes" itemValue="true"/>
+                <f:selectItem itemLabel="No" itemValue="false"/>
+                <f:ajax execute="firstName lastName @this" render="@form"/>
+            </h:selectOneRadio>
+            <br/>
+        </h:panelGrid>
+
+        <p:outputPanel id="usOutputPanel">
+            <p:panel id="usPanel" rendered="#{registerBean.USCitizen}">
+                <h:outputText value="This is the US Panel"/>
+            </p:panel>
+        </p:outputPanel>
+
+        <p:outputPanel id="foreignOutputPanel">
+            <p:panel id="foreignPanel" rendered="#{!registerBean.USCitizen}">
+                <h:outputText value="This is the Foreign Panel"/>
+            </p:panel>
+        </p:outputPanel>
+    </h:form>
+</h:body>
+</html>
