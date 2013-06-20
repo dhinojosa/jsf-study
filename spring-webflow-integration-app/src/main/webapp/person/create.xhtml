@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/templates/template.xhtml">
+    <ui:define name="head">
+        <title>Create Person</title>
+    </ui:define>
+
+    <ui:define name="body">
+        Please enter your information
+        <h:form id="createPerson">
+            <h:panelGrid columns="2">
+                <h:outputLabel id="firstName_label" name="firstName_label" value="First Name"/>
+                <h:inputText id="firstName" name="firstName" value="#{person.firstName}"/>
+                <h:outputLabel id="lastName_label" name="lastName_label" value="Last Name"/>
+                <h:inputText id="lastName" name="lastName" value="#{person.lastName}"/>
+            </h:panelGrid>
+            <h:commandButton id="submit" action="savePerson" value="Save"/>
+        </h:form>
+    </ui:define>
+</ui:composition>
