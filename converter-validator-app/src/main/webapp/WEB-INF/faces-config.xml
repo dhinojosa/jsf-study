@@ -5,6 +5,10 @@
         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
         version="2.1">
     <application>
+        <locale-config>
+            <default-locale>en_US</default-locale>
+            <supported-locale>es_MX</supported-locale>
+        </locale-config>
         <message-bundle>
             com.evolutionnext.jsf.messages
         </message-bundle>

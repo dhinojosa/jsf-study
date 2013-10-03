@@ -1,0 +1,7 @@
+<tomee>
+    <Resource id="userDataSource" type="DataSource">
+        jdbcDriver org.hsqldb.jdbcDriver
+        jdbcUrl jdbc:hsqldb:hsql://localhost/userdb
+        jtaManaged true
+    </Resource>
+</tomee>

@@ -13,6 +13,7 @@ public class HelloBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String name;
+    private String nickname;
 
     public String getName() {
         return name;
@@ -24,5 +25,13 @@ public class HelloBean implements Serializable {
 
     public String getWelcomeMessage() {
         return String.format("Hello there %s", name);
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 }

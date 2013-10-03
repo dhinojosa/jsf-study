@@ -16,10 +16,14 @@
     <h3>JSF 2.0 + Ajax Hello World Example</h3>
 
     <h:form>
-        <h:inputText id="name" value="#{helloBean.name}"/>
+        <h:inputText id="name" value="#{helloBean.name}" required="true"/>
+        <h:message id="name_msg" for="name"/>
+
+        <h:inputText id="nickname" value="#{helloBean.nickname}" required="true"/>
+        <h:message id="nickname_msg" for="nickname"/>
 
         <h:commandButton value="Welcome Me">
-            <f:ajax execute="name" render="output"/>
+            <f:ajax execute="name nickname" render="name_msg nickname_msg output"/>
         </h:commandButton>
 
         <h2><h:outputText id="output" value="#{helloBean.welcomeMessage}"/></h2>

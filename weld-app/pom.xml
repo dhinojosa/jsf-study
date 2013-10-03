@@ -16,39 +16,27 @@
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.10</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.weld.servlet</groupId>
-            <artifactId>weld-servlet</artifactId>
-            <version>1.1.14.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.faces</groupId>
-            <artifactId>jsf-impl</artifactId>
-            <version>2.1.24</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.faces</groupId>
-            <artifactId>jsf-api</artifactId>
-            <version>2.1.24</version>
+            <groupId>org.apache.openejb</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>6.0-5</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <build>
-        <finalName>weld</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.openejb.maven</groupId>
                 <artifactId>tomee-maven-plugin</artifactId>
-                <version>1.0.1</version>
+                <version>1.5.2</version>
                 <configuration>
                     <synchronization>
                         <extensions>
-                            <extension>.class</extension> <!-- if you want to update each time you build with mvn compile -->
+                            <!-- if you want to update each time you build with mvn compile -->
+                            <extension>.class</extension>
                             <extension>.xhtml</extension>
+                            <extension>.html</extension>
+                            <extension>.js</extension>
+                            <extension>.css</extension>
                         </extensions>
                     </synchronization>
                     <reloadOnUpdate>true</reloadOnUpdate>
